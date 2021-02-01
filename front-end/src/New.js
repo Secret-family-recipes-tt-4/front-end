@@ -11,7 +11,7 @@ function New() {
     ingredients: "", // text, required
     instructions: "", // text, required
     notes: "", // text, optional
-    categories: [], // array of category ids*, optional
+    categories: [1], // array of category ids*, optional
   });
   const handleChange = (e) => {
     setRecipeData({
@@ -19,6 +19,10 @@ function New() {
       [e.target.name]: e.target.value,
     });
   };
+  const handleSubmitNewRecipe=(e)=>{
+    e.preventDefault();
+    //dispatch and action to the reducer
+  }
   return (
     <div>
       <h1>This is my New page</h1>
