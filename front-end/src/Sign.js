@@ -1,8 +1,13 @@
 import React from "react";
+import { connect } from 'react-redux';
 import { Form, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
-
-function Sign() {
+import axios from 'axios';
+function Sign(props) {
+  const handleSubmitSignUp=(e)=>{
+    e.preventDefault();
+    axios.get("https://secret-fam-recipes.herokuapp.com/register")
+  }
   return (
     <div>
       <Card className="mb-10">
@@ -47,4 +52,7 @@ function Sign() {
     </div>
   );
 }
-export default Sign;
+const mapStateToProps=(state)=>{
+  return state;
+}
+export default connect(mapStateToProps,{})(Sign);
