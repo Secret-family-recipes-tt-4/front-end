@@ -12,7 +12,7 @@ import { Container, Col } from "react-bootstrap";
 
 
 function App(props) {
-  console.log("props from app",props)
+
   return (
     <div>
       <Header />
