@@ -42,6 +42,7 @@ function Sign(props) {
           <Link to="/New" className="new" onClick={handleSubmitSignUp}>
             Sign up
           </Link>
+          {/* Change link to button */}
         </Card.Body>
       </Card>
     </div>
