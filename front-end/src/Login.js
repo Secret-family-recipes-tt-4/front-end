@@ -19,7 +19,7 @@ function Login() {
           <Form>
             <Form.Group>
               <Form.Label>Password:</Form.Label>
-              <Form.Control type="email" placeholder="Enter Password" />
+              <Form.Control type="password" placeholder="Enter Password" />
               <Form.Text className="text-muted"></Form.Text>
             </Form.Group>
           </Form>

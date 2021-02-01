@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
+import { connect } from 'react-redux';
 import "./App.css";
 import Header from "./Header";
 import Home from "./Home";
@@ -8,31 +9,10 @@ import Sign from "./Sign";
 import New from "./New";
 import { Container, Col } from "react-bootstrap";
 
-const initialRecipeValues = {
-  // text inputs
-  recipe: "",
-  source: "",
-  ingredients: "",
-  instructions: "",
-  // dropdown
-  category: "",
-};
-const initialRecipeErrors = {
-  recipe: "",
-  source: "",
-  ingredients: "",
-  instructions: "",
-  category: "",
-};
-const initalRecipe = [];
-const initialDisabled = true;
 
-function App() {
-  ///// STATES /////
-  const [recipe, setRecipt] = useState(initalRecipe);
-  const [recipeValues, setRecipeValues] = useState(initialRecipeValues);
-  const [recipeErrors, setRecipeErrors] = useState(initialRecipeErrors);
-  const [disabled, setDisabled] = useState(initialDisabled);
+
+function App(props) {
+  console.log("props from app",props)
   return (
     <div>
       <Header />
@@ -56,4 +36,7 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps=(state)=>{
+  return state;
+}
+export default connect(mapStateToProps,{})(App);
