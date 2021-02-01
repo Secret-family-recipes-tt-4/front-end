@@ -58,10 +58,10 @@ function New() {
             name="category"
             aria-labelledby="dropdownMenuButton"
           >
-            <p class="dropdown-item">Breakfast</p>
-            <p class="dropdown-item">Lunch</p>
-            <p class="dropdown-item">Dinner</p>
-            <p class="dropdown-item">Dessert</p>
+            <p class="dropdown-item" value={1}>Breakfast</p>
+            <p class="dropdown-item" value={2}>Lunch</p>
+            <p class="dropdown-item" value={3}>Dinner</p>
+            <p class="dropdown-item" value={4}>Dessert</p>
           </div>
         </div>
       </Form>
