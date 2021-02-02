@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { loadRecipes } from '../store/actions';
 
 const  UserPage=(props)=> {
-
+    props.dispatch(loadRecipes())
     return (
         <div>
             <h1>Hello, User</h1>
