@@ -1,9 +1,11 @@
 import React from 'react'
 
-export default function Recipe() {
+function Recipe() {
     return (
         <div>
             
         </div>
     )
 }
+
+export default Recipe
