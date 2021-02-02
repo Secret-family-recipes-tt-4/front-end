@@ -1,5 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import React from 'react';
+import React from "react";
 
 export const AXIOS_START = "AXIOS_START";
 export const AXIOS_FAIL = "AXIOS_FAIL";
@@ -18,36 +18,34 @@ export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
 export const DELETE_RECIPE_SUCCESS = "DELETE_RECIPE_SUCCESS";
 //export const DELETE_RECIPE_FAIL = "DELETE_RECIPE_FAIL";
 
-
-export const loadRecipes = () =>dispatch=> {
-
+export const loadRecipes = () => (dispatch) => {
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
         .get("/recipes")
         .then((response) => {
-            console.log(response.data)
+            console.log(response.data);
             dispatch({ type: LOAD_RECIPES_SUCCESS, payload: response.data });
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));
 };
 
-export const submitRecipe = (recipe) =>dispatch=> {
+export const submitRecipe = (recipe) => (dispatch) => {
     // doesnt need id
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
         .post("/recipes", recipe)
         .then((response) => {
+            console.log("works");
             loadRecipes(); //after add new recipe we need to get recipes again
             //dispatch({ type: SUBMIT_RECIPE_SUCCESS, payload: recipe });
         })
         .catch((error) => {
+            console.log("nope");
             dispatch({ type: AXIOS_FAIL, payload: error.data });
         });
 };
 
-
-export const editRecipe = (recipe) =>dispatch=> {
-
+export const editRecipe = (recipe) => (dispatch) => {
     // needs id
     dispatch({ type: AXIOS_START });
 
@@ -64,9 +62,7 @@ export const editRecipe = (recipe) =>dispatch=> {
         });
 };
 
-
-export const deleteRecipe = (recipeID) =>dispatch=> {
-
+export const deleteRecipe = (recipeID) => (dispatch) => {
     dispatch({ type: AXIOS_START });
 
     axiosWithAuth()
