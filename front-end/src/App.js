@@ -8,8 +8,8 @@ import Login from "./Login";
 import Sign from "./Sign";
 import New from "./New";
 import { Container, Col } from "react-bootstrap";
-
-
+import PrivateRoute from './components/PrivateRoute';
+import UserPage from './components/UserPage';
 
 function App(props) {
 
@@ -21,6 +21,7 @@ function App(props) {
           <Route exact path="/">
             <Home />
           </Route>
+          <PrivateRoute exact path='/User-page/' component={UserPage}/>
           <Route exact path="/Login">
             <Login />
           </Route>
