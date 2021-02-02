@@ -5,7 +5,7 @@ import { loadRecipes } from '../store/actions';
 import Recipes from './Recipes'
 
 const  UserPage=(props)=> {
-    console.log(props)
+    props.dispatch(loadRecipes());
     return (
         <div>
             <h1>Hello, user</h1>

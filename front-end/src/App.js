@@ -30,7 +30,7 @@ function App(props) {
                     <Route exact path="/Sign">
                         <Sign />
                     </Route>
-                    <PrivateRoute exact path='/User-page' component={UserPage} dispatch={props.dispatch}/>
+                    <PrivateRoute exact path='/User-page' component={UserPage}/>
                 </Col>
             </Container>
         </div>
