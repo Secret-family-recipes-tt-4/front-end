@@ -1,7 +1,10 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { connect } from 'react-redux';
+
+import { loadRecipes } from '../store/actions';
+
 const  UserPage=(props)=> {
-    console.log(props)
+
     return (
         <div>
             <h1>Hello, User</h1>
@@ -9,6 +12,6 @@ const  UserPage=(props)=> {
     )
 };
 const mapStateToProps=(state)=>{
-    return state;
+    return( state );
 }
-export default connect(mapStateToProps,{})(UserPage)
+export default connect(mapStateToProps,{loadRecipes})(UserPage)
