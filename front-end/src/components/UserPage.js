@@ -7,7 +7,7 @@ const  UserPage=(props)=> {
     props.dispatch(loadRecipes())
     return (
         <div>
-            <h1>Hello, Test sebastian</h1>
+            <h1>Hello, Test sebastian, Hello senih</h1>
         </div>
     )
 };
