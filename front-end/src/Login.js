@@ -1,9 +1,11 @@
 import React,{useState} from "react";
 import { Card, Form } from "react-bootstrap";
-import { Link, Route } from "react-router-dom";
+import { Link, Route, useHistory } from "react-router-dom";
+import axios from 'axios';
 import Sign from "./Sign";
 
 function Login() {
+  const history=useHistory();
   const [formData, setFormData]=useState({username:'',password:''})
   const handleChange=(e)=>{
     setFormData({
@@ -11,8 +13,17 @@ function Login() {
       [e.target.name]:e.target.value
     });
   }
-  const submitLogin=()=>{
-    //dispatches action to submit info to the API, and get an auth token back
+  const handleSubmitSignIn=(e)=>{
+    console.log(formData)
+    axios.post("https://secret-fam-recipes.herokuapp.com/api/login",formData)
+      .then((res)=>{
+        console.log(res.data)
+        localStorage.setItem('token',res.data.token)
+          history.push('/')
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
   }
   
   return (
@@ -27,7 +38,7 @@ function Login() {
             </Form.Group>
           </Form>
 
-          <Form>
+          <Form >
             <Form.Group>
               <Form.Label></Form.Label>
               <Form.Control type="password" name='password' value={formData.password}onChange={handleChange} placeholder="Enter Password" />
@@ -41,9 +52,9 @@ function Login() {
             </Link>
           </div>
           <div className="sign">
-            <Link to="/" className="btn btn-primary">
-              Sign in
-            </Link>
+          <button class="btn btn-success" type="submit" onClick={handleSubmitSignIn}>
+          Sign in
+          </button>
           </div>
         </div>
       </Card.Body>

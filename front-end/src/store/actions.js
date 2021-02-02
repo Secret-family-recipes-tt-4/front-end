@@ -18,7 +18,7 @@ export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
 export const DELETE_RECIPE_SUCCESS = "DELETE_RECIPE_SUCCESS";
 //export const DELETE_RECIPE_FAIL = "DELETE_RECIPE_FAIL";
 
-export const loadRecipes = () => {
+export const loadRecipes = () =>dispatch=> {
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
         .get("/recipes")
@@ -27,7 +27,7 @@ export const loadRecipes = () => {
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));
 };
-export const submitRecipe = (recipe) => {
+export const submitRecipe = (recipe) =>dispatch=> {
     // doesnt need id
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
@@ -41,7 +41,7 @@ export const submitRecipe = (recipe) => {
         });
 };
 
-export const editRecipe = (recipe) => {
+export const editRecipe = (recipe) =>dispatch=> {
     // needs id
     dispatch({ type: AXIOS_START });
 
@@ -58,7 +58,7 @@ export const editRecipe = (recipe) => {
         });
 };
 
-export const deleteRecipe = (recipeID) => {
+export const deleteRecipe = (recipeID) =>dispatch=> {
     dispatch({ type: AXIOS_START });
 
     axiosWithAuth()

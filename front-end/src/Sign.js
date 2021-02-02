@@ -16,7 +16,15 @@ function Sign(props) {
     
 
   const handleSubmitSignUp=(e)=>{
-    console.log("dispatch to reducer")
+    console.log(formData)
+    axios.post("https://secret-fam-recipes.herokuapp.com/api/register",formData)
+      .then((res)=>{
+        console.log(res.data)
+       
+      })
+      .catch((err)=>{
+        console.log(err)
+      })
   }
   
   console.log(formData)
