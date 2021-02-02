@@ -8,6 +8,7 @@ import Login from "./Login";
 import Sign from "./Sign";
 import New from "./New";
 import { Container, Col } from "react-bootstrap";
+<<<<<<< HEAD
 
 function App(props) {
     return (
@@ -32,6 +33,35 @@ function App(props) {
             </Container>
         </div>
     );
+=======
+import PrivateRoute from './components/PrivateRoute';
+import UserPage from './components/UserPage';
+
+function App(props) {
+
+  return (
+    <div>
+      <Header />
+      <Container>
+        <Col>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <PrivateRoute exact path='/User-page/' component={UserPage}/>
+          <Route exact path="/Login">
+            <Login />
+          </Route>
+          <Route exact path="/New">
+            <New />
+          </Route>
+          <Route exact path="/Sign">
+            <Sign />
+          </Route>
+        </Col>
+      </Container>
+    </div>
+  );
+>>>>>>> b963cba0fa25f30e4e97715adb72c23f142b9836
 }
 
 const mapStateToProps = (state) => {

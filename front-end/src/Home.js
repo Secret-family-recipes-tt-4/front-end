@@ -11,8 +11,12 @@ function Home() {
     }, []);
     return (
         <div>
+<<<<<<< HEAD
             <h1>This is my Homepage</h1>
             {console.log(state.recipes)}
+=======
+            <h1>This is a landing page maybe?</h1>
+>>>>>>> b963cba0fa25f30e4e97715adb72c23f142b9836
         </div>
     );
 }
