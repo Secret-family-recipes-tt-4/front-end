@@ -4,7 +4,7 @@ Forms, state,styling
 
 Done by Naj, Tazz, and Tony
 
-//api use "https://secret-fam-recipes.herokuapp.com/"
+//api use "https://secret-fam-recipes.herokuapp.com/api"
     -POST.../register
     -POST.../login
     -GET.../recipes
