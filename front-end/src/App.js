@@ -14,7 +14,7 @@ import PrivateRoute from './components/PrivateRoute';
 function App(props) {
     return (
         <div>
-            {console.log("app", props)}
+         
             <Header />
             <Container>
                 <Col>
