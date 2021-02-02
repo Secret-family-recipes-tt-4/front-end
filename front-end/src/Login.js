@@ -5,7 +5,6 @@ import axios from "axios";
 import Sign from "./Sign";
 
 function Login() {
-<<<<<<< HEAD
     const history = useHistory();
     const [formData, setFormData] = useState({ username: "", password: "" });
     const handleChange = (e) => {
@@ -31,39 +30,6 @@ function Login() {
                 console.log(err);
             });
     };
-=======
-  const history=useHistory();
-  const [formData, setFormData]=useState({username:'',password:''})
-  const handleChange=(e)=>{
-    setFormData({
-      ...formData,
-      [e.target.name]:e.target.value
-    });
-  }
-  const handleSubmitSignIn=(e)=>{
-    console.log(formData)
-    axios.post("https://secret-fam-recipes.herokuapp.com/api/login",formData)
-      .then((res)=>{
-        localStorage.setItem('token',res.data.token)
-          history.push('/User-page')
-      })
-      .catch((err)=>{
-        console.log(err)
-      })
-  }
-  
-  return (
-    <Card className="mb-10">
-      <Card.Body>
-        <div className="mx-auto">
-          <Form>
-            <Form.Group>
-              <Form.Label></Form.Label>
-              <Form.Control type="username" name='username' value={formData.username} onChange={handleChange}placeholder="Enter your Username" />
-              <Form.Text className="text-muted"></Form.Text>
-            </Form.Group>
-          </Form>
->>>>>>> b963cba0fa25f30e4e97715adb72c23f142b9836
 
     return (
         <Card className="mb-10">
