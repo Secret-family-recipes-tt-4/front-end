@@ -5,43 +5,18 @@ export const AXIOS_FAIL = "AXIOS_FAIL";
 
 //export const LOAD_RECIPES_START = "LOAD_RECIPES_START";
 export const LOAD_RECIPES_SUCCESS = "LOAD_RECIPES_SUCCESS";
-export const LOAD_RECIPES_FAIL = "LOAD_RECIPES_FAIL";
+//export const LOAD_RECIPES_FAIL = "LOAD_RECIPES_FAIL";
 
 //export const SUBMIT_RECIPE_START = "SUBMIT_RECIPE_START";
 export const SUBMIT_RECIPE_SUCCESS = "SUBMIT_RECIPE_SUCCESS";
-export const SUBMIT_RECIPE_FAIL = "SUBMIT_RECIPE_FAIL";
+//export const SUBMIT_RECIPE_FAIL = "SUBMIT_RECIPE_FAIL";
 
 export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
-export const EDIT_RECIPE_FAIL = "EDIT_RECIPE_FAIL";
+//export const EDIT_RECIPE_FAIL = "EDIT_RECIPE_FAIL";
 
 export const DELETE_RECIPE_SUCCESS = "DELETE_RECIPE_SUCCESS";
-export const DELETE_RECIPE_FAIL = "DELETE_RECIPE_FAIL";
+//export const DELETE_RECIPE_FAIL = "DELETE_RECIPE_FAIL";
 
-// export const submitSignUp = (username, password) => {
-//     dispatch({ type: FETCH_START });
-//     axios
-//         .post("https://secret-fam-recipes.herokuapp.com/api/register", {
-//             username: username,
-//             password: password,
-//         })
-//         .then((response) => {
-//             dispatch({ type: FETCH_SUCCESS});
-//         })
-//         .catch((error) => {
-//             dispatch({ type: FETCH_FAIL, payload: error.data });
-//         });
-// };
-// export const submitSignIn = (username, password) => {
-//     axios
-//         .post("https://secret-fam-recipes.herokuapp.com/api/login", {
-//             username: username,
-//             password: password,
-//         })
-//         .then((response) => {
-//             localStorage.setItem("token", response.data.token);
-//             dispatch({ type: FETCH_SUCCESS, payload: response.data });
-//         });
-// };
 export const loadRecipes = () => {
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
