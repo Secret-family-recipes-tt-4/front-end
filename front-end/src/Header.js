@@ -41,6 +41,11 @@ function Header() {
               </Link>
             </li>
             <li className="navbar-item">
+              <Link to="/User-page" className="nav-link" >
+               User page
+              </Link>
+            </li>
+            <li className="navbar-item">
               <Link to="/New" className="nav-link">
                 New Recipes
               </Link>

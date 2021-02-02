@@ -12,7 +12,6 @@ function Home() {
     return (
         <div>
             <h1>This is my Homepage</h1>
-            {console.log(state.recipes)}
         </div>
     );
 }

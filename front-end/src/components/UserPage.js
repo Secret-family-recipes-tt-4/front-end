@@ -1,13 +1,15 @@
-import React,{useEffect} from 'react';
+import React,{useEffect, useDispatch} from 'react';
 import { connect } from 'react-redux';
 
 import { loadRecipes } from '../store/actions';
+import Recipes from './Recipes'
 
 const  UserPage=(props)=> {
-    props.dispatch(loadRecipes())
+    console.log(props)
     return (
         <div>
-            <h1>Hello, Test sebastian, Hello senih</h1>
+            <h1>Hello, user</h1>
+            <Recipes recipes={props.recipes}/>
         </div>
     )
 };

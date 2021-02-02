@@ -24,7 +24,7 @@ function Login() {
             .then((res) => {
                 console.log(res.data);
                 localStorage.setItem("token", res.data.token);
-                history.push("/");
+                history.push(`/User-page`);
             })
             .catch((err) => {
                 console.log(err);
