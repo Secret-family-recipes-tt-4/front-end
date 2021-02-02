@@ -19,14 +19,7 @@ export const reducer = (state = intitialState, action) => {
         case AXIOS_FAIL:
             return { ...state, isLoading: false, error: action.payload };
         case LOAD_RECIPES_SUCCESS:
-            console.log("reducer", action.payload);
             return { ...state, recipes: action.payload, isLoading: false };
-        // case LOAD_RECIPES_FAIL:
-        //     return { ...state, isLoading: false, error: action.payload };
-        // case SUBMIT_RECIPE_SUCCESS:
-        //     return {...state, isLoading: false};
-        // case SUBMIT_RECIPE_FAIL:
-        //     return { ...state, isLoading: false, error: action.payload };
         case EDIT_RECIPE_SUCCESS:
             const newRecipes = state.recipes.map((recipe) => {
                 if (recipe.id === action.payload.id) {

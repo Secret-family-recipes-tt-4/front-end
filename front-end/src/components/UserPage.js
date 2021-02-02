@@ -6,6 +6,7 @@ import Recipes from "./Recipes";
 
 const UserPage = (props) => {
     const [filteredRecipes, setFilteredRecipes] = useState(props.recipes);
+    const [searchWord, setSearchWord] = useState("");
     useEffect(() => {
         props.loadRecipes();
     }, []);
@@ -15,7 +16,11 @@ const UserPage = (props) => {
     }, [props.recipes]);
 
     const handleSearchChange = (e) => {
-        const searchWord = e.target.value;
+        setSearchWord(e.target.value);
+    };
+
+    const handleSearch = (e) => {
+        e.preventDefault();
         if (searchWord.length >= 3) {
             const filtered = props.recipes.filter((recipe) => {
                 if (
@@ -34,7 +39,6 @@ const UserPage = (props) => {
 
     return (
         <div>
-            {props.recipes}
             <h1>Hello, user</h1>
             <form className="d-flex">
                 <input
@@ -45,6 +49,13 @@ const UserPage = (props) => {
                     name="search"
                     onChange={handleSearchChange}
                 />
+                <button
+                    className="btn btn-success"
+                    type="submit"
+                    onClick={handleSearch}
+                >
+                    Search
+                </button>
             </form>
             <Recipes recipes={filteredRecipes} />
         </div>
