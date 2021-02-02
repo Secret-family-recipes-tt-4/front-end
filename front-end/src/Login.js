@@ -70,7 +70,7 @@ function Login() {
                     </div>
                     <div className="sign">
                         <button
-                            class="btn btn-success"
+                            className="btn btn-success"
                             type="submit"
                             onClick={handleSubmitSignIn}
                         >
