@@ -32,7 +32,7 @@ function App(props) {
             </Container>
         </div>
     );
-}
+    }
 
 const mapStateToProps = (state) => {
     return state;
