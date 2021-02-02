@@ -1,32 +1,46 @@
-import React, { useEffect, useDispatch } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { loadRecipes } from "../store/actions";
 import Recipes from "./Recipes";
 
 const UserPage = (props) => {
-
+    const [filteredRecipes, setFilteredRecipes] = useState(props.recipes);
     useEffect(() => {
         props.loadRecipes();
     }, []);
+
+    const handleSearchChange = (e) => {
+        const searchWord = e.target.value;
+        if (searchWord.length >= 3) {
+            const filtered = props.recipes.filter((recipe) => {
+                if (
+                    recipe.title.toLowerCase().includes(searchWord) ||
+                    recipe.categories.toLowerCase().includes(searchWord)
+                ) {
+                    return recipe;
+                }
+            });
+            setFilteredRecipes(filtered);
+        } else {
+            setFilteredRecipes(props.recipes);
+        }
+    };
+
     return (
         <div>
             <h1>Hello, user</h1>
-            <Recipes recipes={props.recipes} />
-            <h1>This is my Homepage</h1>
-            <Card className='mb-10'>
-                <Card.Body img src='https://picsum.photos/200/300'>
-                    
-                    <Card.Text>
-                        <h1>This is a new recipie</h1>
-                    </Card.Text>
-                        <button className='editbtn' class='btn' style={{marginLeft: 2 }} >Edit</button>
-                
-                        <button className='deletebtn' class='btn'>Delete</button>
-                </Card.Body>
-            </Card>
-
-
+            <form className="d-flex">
+                <input
+                    className="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
+                    name="search"
+                    onChange={handleSearchChange}
+                />
+            </form>
+            <Recipes recipes={filteredRecipes} />
         </div>
     );
 };
