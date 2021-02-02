@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { submitRecipe } from "./store/actions";
 
@@ -16,7 +15,6 @@ function New(props) {
         categories: [1], // array of category ids*, optional
     });
     const history = useHistory();
-    const state = useSelector((state) => state);
     const dispatch = useDispatch();
 
     const handleChange = (e) => {
@@ -29,7 +27,7 @@ function New(props) {
         e.preventDefault();
         //dispatch and action to the reducer
         dispatch(submitRecipe(recipeData));
-        history.push("/");
+        history.push("/User-page");
     };
     return (
         <div>

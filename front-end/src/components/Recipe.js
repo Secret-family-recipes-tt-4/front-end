@@ -1,7 +1,16 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { deleteRecipe } from "../store/actions";
 
 export default function Recipe({ recipe }) {
+    const dispatch = useDispatch();
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        console.log("delete");
+        dispatch(deleteRecipe(recipe.id));
+    };
     return (
         <div>
             <Card className="mb-10">
@@ -22,7 +31,11 @@ export default function Recipe({ recipe }) {
                         Edit
                     </button>
 
-                    <button className="deletebtn" class="btn">
+                    <button
+                        className="deletebtn"
+                        class="btn"
+                        onClick={handleDelete}
+                    >
                         Delete
                     </button>
                 </Card.Body>

@@ -2,13 +2,8 @@ import {
     AXIOS_START,
     AXIOS_FAIL,
     LOAD_RECIPES_SUCCESS,
-    LOAD_RECIPES_FAIL,
-    SUBMIT_RECIPE_SUCCESS,
-    SUBMIT_RECIPE_FAIL,
     EDIT_RECIPE_SUCCESS,
-    EDIT_RECIPE_FAIL,
     DELETE_RECIPE_SUCCESS,
-    DELETE_RECIPE_FAIL,
 } from "./actions";
 
 const intitialState = {
@@ -24,6 +19,7 @@ export const reducer = (state = intitialState, action) => {
         case AXIOS_FAIL:
             return { ...state, isLoading: false, error: action.payload };
         case LOAD_RECIPES_SUCCESS:
+            console.log("reducer", action.payload);
             return { ...state, recipes: action.payload, isLoading: false };
         // case LOAD_RECIPES_FAIL:
         //     return { ...state, isLoading: false, error: action.payload };
@@ -42,11 +38,10 @@ export const reducer = (state = intitialState, action) => {
             return { ...state, recipes: newRecipes, isLoading: false };
         case DELETE_RECIPE_SUCCESS:
             const updatedRecipes = state.recipes.filter(
-                (recipe) => recipe !== action.payload
+                (recipe) => recipe.id !== action.payload
             );
             return { ...state, recipes: updatedRecipes, isLoading: false };
         default:
             return state;
     }
 };
-

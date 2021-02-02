@@ -1,5 +1,4 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
-import React from "react";
 
 export const AXIOS_START = "AXIOS_START";
 export const AXIOS_FAIL = "AXIOS_FAIL";
@@ -23,7 +22,6 @@ export const loadRecipes = () => (dispatch) => {
     axiosWithAuth()
         .get("/recipes")
         .then((response) => {
-            console.log(response.data);
             dispatch({ type: LOAD_RECIPES_SUCCESS, payload: response.data });
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));

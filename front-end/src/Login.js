@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Card, Form } from "react-bootstrap";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import Sign from "./Sign";
 
 function Login() {
     const history = useHistory();

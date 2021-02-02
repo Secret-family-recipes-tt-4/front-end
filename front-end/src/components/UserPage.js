@@ -10,6 +10,10 @@ const UserPage = (props) => {
         props.loadRecipes();
     }, []);
 
+    useEffect(() => {
+        setFilteredRecipes(props.recipes);
+    }, [props.recipes]);
+
     const handleSearchChange = (e) => {
         const searchWord = e.target.value;
         if (searchWord.length >= 3) {
@@ -20,6 +24,7 @@ const UserPage = (props) => {
                 ) {
                     return recipe;
                 }
+                return null;
             });
             setFilteredRecipes(filtered);
         } else {
@@ -29,6 +34,7 @@ const UserPage = (props) => {
 
     return (
         <div>
+            {props.recipes}
             <h1>Hello, user</h1>
             <form className="d-flex">
                 <input
