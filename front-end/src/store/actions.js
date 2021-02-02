@@ -25,6 +25,7 @@ export const loadRecipes = () =>dispatch=> {
     axiosWithAuth()
         .get("/recipes")
         .then((response) => {
+            console.log(response.data)
             dispatch({ type: LOAD_RECIPES_SUCCESS, payload: response.data });
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));

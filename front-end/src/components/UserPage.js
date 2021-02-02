@@ -1,9 +1,17 @@
-import React from 'react'
+import React,{useEffect} from 'react';
+import { connect } from 'react-redux';
 
-export default function UserPage() {
+import { loadRecipes } from '../store/actions';
+
+const  UserPage=(props)=> {
+
     return (
         <div>
-            <h1>Hello world</h1>
+            <h1>Hello, User</h1>
         </div>
     )
 };
+const mapStateToProps=(state)=>{
+    return( state );
+}
+export default connect(mapStateToProps,{loadRecipes})(UserPage)

@@ -38,7 +38,6 @@ import PrivateRoute from './components/PrivateRoute';
 import UserPage from './components/UserPage';
 
 function App(props) {
-
   return (
     <div>
       <Header />
@@ -47,7 +46,7 @@ function App(props) {
           <Route exact path="/">
             <Home />
           </Route>
-          <PrivateRoute exact path='/User-page/' component={UserPage}/>
+          <PrivateRoute exact path='/User-page' component={UserPage} dispatch={props.dispatch}/>
           <Route exact path="/Login">
             <Login />
           </Route>

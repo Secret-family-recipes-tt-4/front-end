@@ -44,7 +44,6 @@ function Login() {
     console.log(formData)
     axios.post("https://secret-fam-recipes.herokuapp.com/api/login",formData)
       .then((res)=>{
-        console.log(res.data)
         localStorage.setItem('token',res.data.token)
           history.push('/User-page')
       })

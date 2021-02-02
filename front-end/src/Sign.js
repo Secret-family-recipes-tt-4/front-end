@@ -15,6 +15,7 @@ function Sign(props) {
         });
     };
 
+
     const handleSubmitSignUp = (e) => {
         e.preventDefault();
         console.log(formData);
@@ -31,6 +32,7 @@ function Sign(props) {
                 console.log(err);
             });
     };
+
 
     console.log(formData);
     return (
