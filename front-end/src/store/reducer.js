@@ -41,11 +41,12 @@ export const reducer = (state = intitialState, action) => {
             });
             return { ...state, recipes: newRecipes, isLoading: false };
         case DELETE_RECIPE_SUCCESS:
-            const newRecipes = state.recipes.filter(
+            const updatedRecipes = state.recipes.filter(
                 (recipe) => recipe !== action.payload
             );
-            return { ...state, recipes: newRecipes, isLoading: false };
+            return { ...state, recipes: updatedRecipes, isLoading: false };
         default:
             return state;
     }
 };
+

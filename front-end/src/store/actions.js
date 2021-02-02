@@ -1,4 +1,5 @@
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import React from 'react';
 
 export const AXIOS_START = "AXIOS_START";
 export const AXIOS_FAIL = "AXIOS_FAIL";
@@ -17,7 +18,9 @@ export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
 export const DELETE_RECIPE_SUCCESS = "DELETE_RECIPE_SUCCESS";
 //export const DELETE_RECIPE_FAIL = "DELETE_RECIPE_FAIL";
 
-export const loadRecipes = () => (dispatch) => {
+
+export const loadRecipes = () =>dispatch=> {
+
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
         .get("/recipes")
@@ -26,7 +29,8 @@ export const loadRecipes = () => (dispatch) => {
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));
 };
-export const submitRecipe = (recipe) => (dispatch) => {
+
+export const submitRecipe = (recipe) =>dispatch=> {
     // doesnt need id
     dispatch({ type: AXIOS_START });
     axiosWithAuth()
@@ -40,7 +44,9 @@ export const submitRecipe = (recipe) => (dispatch) => {
         });
 };
 
-export const editRecipe = (recipe) => (dispatch) => {
+
+export const editRecipe = (recipe) =>dispatch=> {
+
     // needs id
     dispatch({ type: AXIOS_START });
 
@@ -57,7 +63,9 @@ export const editRecipe = (recipe) => (dispatch) => {
         });
 };
 
-export const deleteRecipe = (recipeID) => (dispatch) => {
+
+export const deleteRecipe = (recipeID) =>dispatch=> {
+
     dispatch({ type: AXIOS_START });
 
     axiosWithAuth()
