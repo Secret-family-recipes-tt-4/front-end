@@ -6,4 +6,4 @@ export default function UserPage() {
             <h1>Hello world</h1>
         </div>
     )
-}
+};

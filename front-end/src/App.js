@@ -21,7 +21,7 @@ function App(props) {
           <Route exact path="/">
             <Home />
           </Route>
-          <PrivateRoute exact path='/User-page/:id' component={UserPage}/>
+          <PrivateRoute exact path='/User-page/' component={UserPage}/>
           <Route exact path="/Login">
             <Login />
           </Route>

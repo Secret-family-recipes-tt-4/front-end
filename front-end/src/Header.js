@@ -30,7 +30,7 @@ function Header() {
             </li>
             <li className="navbar-item">
               <Link to="/New" className="nav-link">
-                New Recipies
+                New Recipes
               </Link>
             </li>
           </ul>
