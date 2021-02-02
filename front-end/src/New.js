@@ -124,7 +124,13 @@ function New(props) {
                             Dinner
                         </p>
                         <p className="dropdown-item" value={4}>
-                            Dessert
+                            Vegetarian
+                        </p>
+                        <p className="dropdown-item" value={5}>
+                            Vegan
+                        </p>
+                        <p className="dropdown-item" value={6}>
+                            Gluten-Free
                         </p>
                     </div>
                 </div>
