@@ -1,32 +1,68 @@
-import React from "react";
+import React,{useState} from "react";
+import { connect } from 'react-redux'
 import { Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { deleteRecipe, editRecipe } from "../store/actions";
+import { deleteRecipe, editRecipe, submitRecipe, loadRecipes  } from "../store/actions";
 
-export default function Recipe({ recipe }) {
-    const dispatch = useDispatch();
+const Recipe=({ recipe })=> {
+    const dispatch = useDispatch()
 
+    const [isEdit,toggleIsEdit]=useState(false)
+    //toggling this will open a new component that is passed props from this one
+    
+    const [recipeToEdit,setRecipeToEdit]=useState(recipe);
+    //this state will determine which recipe is being passed to edit menu
+    
+    const [editRecipeData, setEditRecipeData]=useState({
+        title: recipe.title,
+        source: recipe.source, 
+        ingredients:recipe.ingredients, 
+        instructions:recipe.instructions, 
+        notes: recipe.notes, 
+        categories: [1], 
+    })
+   
     const handleDelete = (e) => {
         e.preventDefault();
         console.log("delete");
         dispatch(deleteRecipe(recipe.id));
     };
-   
+   const handleEdit=(e)=>{
+    toggleIsEdit(!isEdit)
+    console.log(recipe.id)
+   }
+   const handleEditChange=(e)=>{
+    setEditRecipeData({
+        ...editRecipeData,
+        [e.target.name]:e.target.value
+    })
+   }
+   const handleSubmitNewRecipe=(e)=>{
+       e.preventDefault();
+       dispatch(editRecipe(editRecipeData));
+       dispatch(loadRecipes());
+   }
+
     return (
         <div>
             <Card className="mb-10">
                 <Card.Body>
                     <h1>{recipe.title}</h1>
+                    {isEdit && <input type="text" name='title' value={editRecipeData.title} onChange={handleEditChange}/>}
                     <h2>Source: {recipe.source}</h2>
+                    {isEdit && <input type="text" name='source' value={editRecipeData.source} onChange={handleEditChange}/>}
                     <h3>Category: {recipe.categories}</h3>
                     <Card.Text>
                         <ul>
                         <li>ingredients: {recipe.ingredients}</li>
+                        {isEdit && <input type="text" name='ingredients' value={editRecipeData.ingredients} onChange={handleEditChange}/>}
                         <li> instructions: {recipe.instructions}</li>
+                        {isEdit && <input type="text" name='instructions' value={editRecipeData.instructions} onChange={handleEditChange}/>}
                         <li> notes: {recipe.notes}</li>
+                        {isEdit && <input type="text" name='notes' value={editRecipeData.notes} onChange={handleEditChange}/>}
                         </ul>
                     </Card.Text>
-                    <button className="editbtn" style={{ marginLeft: 2 }}>
+                    <button onClick={handleEdit}className="editbtn" style={{ marginLeft: 2 }}>
                         Edit
                     </button>
 
@@ -37,9 +73,21 @@ export default function Recipe({ recipe }) {
                     >
                         Delete
                     </button>
+                    <button
+                        className="savebtn"
+                        onClick={handleSubmitNewRecipe}
+                        style={{ marginLeft: 20 }}
+                    >
+                        Save
+                    </button>
                 </Card.Body>
             </Card>
         </div>
-    );
-}
+     );
+    }
+    const mapStateToProps = (state) => {
+        return state;
+    };
+    
+    export default connect(mapStateToProps, { submitRecipe, loadRecipes,editRecipe })(Recipe);
 
