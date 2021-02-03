@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { deleteRecipe } from "../store/actions";
+import { deleteRecipe, editRecipe } from "../store/actions";
 
 export default function Recipe({ recipe }) {
     const dispatch = useDispatch();
@@ -11,6 +11,7 @@ export default function Recipe({ recipe }) {
         console.log("delete");
         dispatch(deleteRecipe(recipe.id));
     };
+   
     return (
         <div>
             <Card className="mb-10">
