@@ -62,23 +62,6 @@ const UserPage = (props) => {
     return (
         <div>
             <h1>Hello, user</h1>
-<<<<<<< HEAD
-            <Recipes recipes={props.recipes} />
-            <h1>This is my Homepage</h1>
-            <Card className='mb-10'>
-                <Card.Body img src='https://picsum.photos/200/300'>
-                    
-                    <Card.Text>
-                        <h1>This is a new recipe</h1>
-                    </Card.Text>
-                        <button className='editbtn' class='btn' style={{marginLeft: 2 }} >Edit</button>
-                
-                        <button className='deletebtn' class='btn'>Delete</button>
-                </Card.Body>
-            </Card>
-
-
-=======
             <form className="d-flex">
                 <input
                     className="form-control me-2"
@@ -98,7 +81,6 @@ const UserPage = (props) => {
                 </button>
             </form>
             <Recipes recipes={filteredRecipes} />
->>>>>>> 0f3ddb66b26c0441aa106d2dde001b77f3b32b7a
         </div>
     );
 };
