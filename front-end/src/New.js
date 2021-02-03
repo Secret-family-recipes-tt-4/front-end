@@ -11,7 +11,7 @@ function New(props) {
         ingredients: "", // text, required
         instructions: "", // text, required
         notes: "", // text, optional
-        categories: [], // array of category ids*, optional
+        categories: [1], // array of category ids*, optional
     });
     const history = useHistory();
 
@@ -145,4 +145,4 @@ const mapStateToProps = (state) => {
     return state;
 };
 
-export default connect(mapStateToProps(), { submitRecipe, loadRecipes })(New);
+export default connect(mapStateToProps, { submitRecipe, loadRecipes })(New);
