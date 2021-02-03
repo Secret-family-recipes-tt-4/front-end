@@ -18,7 +18,7 @@ const UserPage = (props) => {
                 <Card.Body img src='https://picsum.photos/200/300'>
                     
                     <Card.Text>
-                        <h1>This is a new recipie</h1>
+                        <h1>This is a new recipe</h1>
                     </Card.Text>
                         <button className='editbtn' class='btn' style={{marginLeft: 2 }} >Edit</button>
                 
