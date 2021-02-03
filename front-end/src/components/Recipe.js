@@ -1,11 +1,43 @@
-import React from 'react'
+import React from "react";
+import { Card } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { deleteRecipe } from "../store/actions";
 
-function Recipe() {
+export default function Recipe({ recipe }) {
+    const dispatch = useDispatch();
+
+    const handleDelete = (e) => {
+        e.preventDefault();
+        console.log("delete");
+        dispatch(deleteRecipe(recipe.id));
+    };
     return (
         <div>
-            
+            <Card className="mb-10">
+                <Card.Body>
+                    <h1>{recipe.title}</h1>
+                    <h2>Source: {recipe.source}</h2>
+                    <h3>Category: {recipe.categories}</h3>
+                    <Card.Text>
+                        ingredients: {recipe.ingredients}
+                        instructions: {recipe.instructions}
+                        notes: {recipe.notes}
+                    </Card.Text>
+                    <button className="editbtn" style={{ marginLeft: 2 }}>
+                        Edit
+                    </button>
+
+                    <button
+                        className="deletebtn"
+                        onClick={handleDelete}
+                        style={{ marginLeft: 20 }}
+                    >
+                        Delete
+                    </button>
+                </Card.Body>
+            </Card>
         </div>
-    )
+    );
 }
 
 export default Recipe
