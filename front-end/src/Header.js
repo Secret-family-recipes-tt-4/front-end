@@ -41,16 +41,17 @@ function Header() {
                                 Logout
                             </Link>
                         </li>
-                        <li className="navbar-item">
+                        {localStorage.getItem('token') && <li className="navbar-item">
                             <Link to="/User-page" className="nav-link">
                                 User page
                             </Link>
-                        </li>
+                        </li>}
+                        {localStorage.getItem('token')&&
                         <li className="navbar-item">
                             <Link to="/New" className="nav-link">
                                 New Recipes
                             </Link>
-                        </li>
+                        </li>}
                     </ul>
                 </div>
             </nav>

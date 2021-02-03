@@ -10,7 +10,7 @@ import {
 const intitialState = {
     recipes: [],
     isLoading: false,
-    error: null,
+    error: null
 };
 
 export const reducer = (state = intitialState, action) => {
