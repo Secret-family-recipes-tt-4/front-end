@@ -31,13 +31,14 @@ export const submitRecipe = (recipe) => (dispatch) => {
         });
 };
 
-export const editRecipe = (recipe) => (dispatch) => {
+export const editRecipe = (recipeId,recipe) => (dispatch) => {
     // needs id
     dispatch({ type: AXIOS_START });
 
     axiosWithAuth()
-        .put(`/recipes${recipe.id}`, recipe)
+        .put(`/recipes/${recipeId}`, recipe)
         .then((response) => {
+            console.log(response)
             dispatch({
                 type: EDIT_RECIPE_SUCCESS,
                 payload: response.data.recipe[0],

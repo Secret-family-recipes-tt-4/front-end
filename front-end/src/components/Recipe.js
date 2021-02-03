@@ -39,7 +39,7 @@ const Recipe=({ recipe })=> {
    }
    const handleSubmitNewRecipe=(e)=>{
        e.preventDefault();
-       dispatch(editRecipe(editRecipeData));
+       dispatch(editRecipe(recipe.id, editRecipeData));
        dispatch(loadRecipes());
    }
 
@@ -74,7 +74,7 @@ const Recipe=({ recipe })=> {
                         Delete
                     </button>
                     <button
-                        className="savebtn"
+                    
                         onClick={handleSubmitNewRecipe}
                         style={{ marginLeft: 20 }}
                     >
@@ -85,9 +85,7 @@ const Recipe=({ recipe })=> {
         </div>
      );
     }
-    const mapStateToProps = (state) => {
-        return state;
-    };
+
     
-    export default connect(mapStateToProps, { submitRecipe, loadRecipes,editRecipe })(Recipe);
+    export default Recipe;
 
