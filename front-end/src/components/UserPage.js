@@ -71,6 +71,7 @@ const UserPage = (props) => {
                     name="search"
                     value={searchWord}
                     onChange={handleSearchChange}
+                    placeholder="search by title or category"
                 />
                 <button
                     className="btn btn-success"

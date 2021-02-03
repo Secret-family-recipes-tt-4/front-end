@@ -19,9 +19,11 @@ export default function Recipe({ recipe }) {
                     <h2>Source: {recipe.source}</h2>
                     <h3>Category: {recipe.categories}</h3>
                     <Card.Text>
-                        ingredients: {recipe.ingredients}
-                        instructions: {recipe.instructions}
-                        notes: {recipe.notes}
+                        <ul>
+                        <li>ingredients: {recipe.ingredients}</li>
+                        <li> instructions: {recipe.instructions}</li>
+                        <li> notes: {recipe.notes}</li>
+                        </ul>
                     </Card.Text>
                     <button className="editbtn" style={{ marginLeft: 2 }}>
                         Edit

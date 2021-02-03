@@ -1,5 +1,7 @@
 import React,{useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 function Header() {
   const history = useHistory();
 
@@ -22,9 +24,6 @@ function Header() {
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav ml-left">
-            <li className="navbar-item">
-            <i class="fas fa-utensils"></i>
-            </li>
 
             <li className="navbar-item">
               <Link to="/" className="nav-link">

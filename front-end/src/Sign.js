@@ -70,6 +70,7 @@ function Sign(props) {
                         to="/New"
                         className="new"
                         onClick={handleSubmitSignUp}
+                        
                     >
                         Sign up
                     </Link>

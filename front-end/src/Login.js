@@ -75,6 +75,7 @@ function Login() {
                             className="btn btn-success"
                             type="submit"
                             onClick={handleSubmitSignIn}
+                            style={{marginLeft:20}}
                         >
                             Sign in
                         </button>
