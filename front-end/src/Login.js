@@ -6,6 +6,7 @@ import axios from "axios";
 function Login() {
     const history = useHistory();
     const [formData, setFormData] = useState({ username: "", password: "" });
+    const [error, setError] = useState("")
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -27,12 +28,16 @@ function Login() {
             })
             .catch((err) => {
                 console.log(err);
+                setError(err)
+                setFormData({ username: "", password: "" })
             });
     };
+   
 
     return (
         <Card className="mb-10">
             <Card.Body>
+                {error && <h1>Please reenter username or password, or create a new account</h1>}
                 <div className="mx-auto">
                     <Form>
                         <Form.Group>
@@ -61,13 +66,11 @@ function Login() {
                             <Form.Text className="text-muted"></Form.Text>
                         </Form.Group>
                     </Form>
-                    <div className="sign">
+                    <div  className="sign">
                         <h6>Don't have an account?</h6>
                         <Link to="/Sign" className="btn btn-primary">
                             Sign up
                         </Link>
-                    </div>
-                    <div className="sign">
                         <button
                             className="btn btn-success"
                             type="submit"
