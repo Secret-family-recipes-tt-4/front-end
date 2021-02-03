@@ -14,27 +14,23 @@ export default function Recipe({ recipe }) {
     return (
         <div>
             <Card className="mb-10">
-                <Card.Body img src="https://picsum.photos/200/300">
+                <Card.Body>
+                    <h1>{recipe.title}</h1>
+                    <h2>Source: {recipe.source}</h2>
+                    <h3>Category: {recipe.categories}</h3>
                     <Card.Text>
-                        <h1>{recipe.title}</h1>
-                        <h2>Source: {recipe.source}</h2>
-                        <h3>Category: {recipe.categories}</h3>
-                        <p>ingredients: {recipe.ingredients}</p>
-                        <p>instructions: {recipe.instructions}</p>
-                        <p>notes: {recipe.notes}</p>
+                        ingredients: {recipe.ingredients}
+                        instructions: {recipe.instructions}
+                        notes: {recipe.notes}
                     </Card.Text>
-                    <button
-                        className="editbtn"
-                        class="btn"
-                        style={{ marginLeft: 2 }}
-                    >
+                    <button className="editbtn" style={{ marginLeft: 2 }}>
                         Edit
                     </button>
 
                     <button
                         className="deletebtn"
-                        class="btn"
                         onClick={handleDelete}
+                        style={{ marginLeft: 20 }}
                     >
                         Delete
                     </button>

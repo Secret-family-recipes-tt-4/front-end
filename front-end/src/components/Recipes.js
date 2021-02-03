@@ -6,7 +6,7 @@ export default function Recipes({ recipes }) {
         <div>
             <>
                 {recipes.map((recipe) => {
-                    return <Recipe recipe={recipe} />;
+                    return <Recipe recipe={recipe} key={recipe.id} />;
                 })}
             </>
         </div>

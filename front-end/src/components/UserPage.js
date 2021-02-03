@@ -13,7 +13,25 @@ const UserPage = (props) => {
 
     useEffect(() => {
         setFilteredRecipes(props.recipes);
+        setSearchWord("");
     }, [props.recipes]);
+
+    useEffect(() => {
+        if (searchWord.length >= 3) {
+            const filtered = props.recipes.filter((recipe) => {
+                if (
+                    recipe.title.toLowerCase().includes(searchWord) ||
+                    recipe.categories.toLowerCase().includes(searchWord)
+                ) {
+                    return recipe;
+                }
+                return null;
+            });
+            setFilteredRecipes(filtered);
+        } else {
+            setFilteredRecipes(props.recipes);
+        }
+    }, [props.recipes, searchWord]);
 
     const handleSearchChange = (e) => {
         setSearchWord(e.target.value);
@@ -37,6 +55,10 @@ const UserPage = (props) => {
         }
     };
 
+    if (props.isLoading) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div>
             <h1>Hello, user</h1>
@@ -47,6 +69,7 @@ const UserPage = (props) => {
                     placeholder="Search"
                     aria-label="Search"
                     name="search"
+                    value={searchWord}
                     onChange={handleSearchChange}
                 />
                 <button

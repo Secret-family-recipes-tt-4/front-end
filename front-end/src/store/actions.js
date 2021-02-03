@@ -2,7 +2,6 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 export const AXIOS_START = "AXIOS_START";
 export const AXIOS_FAIL = "AXIOS_FAIL";
-
 export const LOAD_RECIPES_SUCCESS = "LOAD_RECIPES_SUCCESS";
 export const SUBMIT_RECIPE_SUCCESS = "SUBMIT_RECIPE_SUCCESS";
 export const EDIT_RECIPE_SUCCESS = "EDIT_RECIPE_SUCCESS";
@@ -13,6 +12,7 @@ export const loadRecipes = () => (dispatch) => {
     axiosWithAuth()
         .get("/recipes")
         .then((response) => {
+            console.log("dis", response.data);
             dispatch({ type: LOAD_RECIPES_SUCCESS, payload: response.data });
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));
@@ -24,7 +24,8 @@ export const submitRecipe = (recipe) => (dispatch) => {
     axiosWithAuth()
         .post("/recipes", recipe)
         .then((response) => {
-            loadRecipes();
+            //loadRecipes();
+            dispatch({ type: SUBMIT_RECIPE_SUCCESS });
         })
         .catch((error) => {
             dispatch({ type: AXIOS_FAIL, payload: error.data });

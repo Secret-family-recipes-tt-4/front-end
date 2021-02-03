@@ -4,6 +4,7 @@ import {
     LOAD_RECIPES_SUCCESS,
     EDIT_RECIPE_SUCCESS,
     DELETE_RECIPE_SUCCESS,
+    SUBMIT_RECIPE_SUCCESS,
 } from "./actions";
 
 const intitialState = {
@@ -20,6 +21,8 @@ export const reducer = (state = intitialState, action) => {
             return { ...state, isLoading: false, error: action.payload };
         case LOAD_RECIPES_SUCCESS:
             return { ...state, recipes: action.payload, isLoading: false };
+        case SUBMIT_RECIPE_SUCCESS: //submit recipe doesn`t change isloading because API doesnt return submitted recipe. after every SUBMIT_RECIPE, LOAD_RECIPES must be called.
+            return { ...state, isLoading: true };
         case EDIT_RECIPE_SUCCESS:
             const newRecipes = state.recipes.map((recipe) => {
                 if (recipe.id === action.payload.id) {

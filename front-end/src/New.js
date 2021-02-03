@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { submitRecipe } from "./store/actions";
+import { submitRecipe, loadRecipes } from "./store/actions";
 
 function New(props) {
     const [recipeData, setRecipeData] = useState({
@@ -15,7 +14,6 @@ function New(props) {
         categories: [1], // array of category ids*, optional
     });
     const history = useHistory();
-    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setRecipeData({
@@ -26,7 +24,11 @@ function New(props) {
     const handleSubmitNewRecipe = (e) => {
         e.preventDefault();
         //dispatch and action to the reducer
-        dispatch(submitRecipe(recipeData));
+        props.submitRecipe(recipeData);
+        //!!! IMPORTANT !!!
+        //submit recipe doesn`t change isloading to True because API doesnt return submitted recipe.
+        //when SUBMIT_RECIPE called, LOAD_RECIPES must be called afterwards.
+        props.loadRecipes();
         history.push("/User-page");
     };
     return (
@@ -143,4 +145,4 @@ const mapStateToProps = (state) => {
     return state;
 };
 
-export default connect(mapStateToProps(), { submitRecipe })(New);
+export default connect(mapStateToProps(), { submitRecipe, loadRecipes })(New);
