@@ -66,13 +66,14 @@ function Login() {
                             <Form.Text className="text-muted"></Form.Text>
                         </Form.Group>
                     </Form>
-                    <div  className="sign">
-                        <h6>Don't have an account?</h6>
-                        <Link to="/Sign" className="btn btn-primary">
+                  
+                        <h6> Don't have an account?</h6>
+                        <div  className="sign">
+                        <Link to="/Sign" className="btn btn-secondary">
                             Sign up
                         </Link>
-                        <button
-                            className="btn btn-success"
+                        <button 
+                            className="btn btn-secondary"
                             type="submit"
                             onClick={handleSubmitSignIn}
                             style={{marginLeft:20}}

@@ -59,9 +59,10 @@ const UserPage = (props) => {
         return <div>Loading...</div>;
     }
 
+   
     return (
         <div>
-            <h1>Hello, user</h1>
+            <h1>Hello, user!</h1>
             <form className="d-flex">
                 <input
                     className="form-control me-2"

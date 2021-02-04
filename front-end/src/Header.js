@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
 
+
 function Header() {
   const history = useHistory();
 
@@ -12,8 +13,11 @@ function Header() {
 
   return (
     <div>
-      <nav className="navbar navbar-light bg-light navbar-expand-lg fixed top">
-        {/* <Link to="/">Secret Family Recipies</Link> */}
+     
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed top">
+        <div>
+         <img src="https://i.ibb.co/pXZvgHd/cutlery-1.png"/>
+     </div>
         <button
           className="navbar-toggler"
           data-toggle="collapse"
@@ -21,7 +25,7 @@ function Header() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarCollapse">
           <ul className="navbar-nav ml-left">
             <li className="navbar-item">
               <Link to="/" className="nav-link">
@@ -39,6 +43,7 @@ function Header() {
                 Logout
               </Link>
             </li>
+           
             {localStorage.getItem("token") && (
               <li className="navbar-item">
                 <Link to="/User-page" className="nav-link">
@@ -54,6 +59,9 @@ function Header() {
               </li>
             )}
           </ul>
+          <div className="grandma">
+              <h1>Secret Family Recipes</h1>
+            </div>
         </div>
       </nav>
     </div>

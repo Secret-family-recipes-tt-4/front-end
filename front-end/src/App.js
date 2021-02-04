@@ -11,11 +11,12 @@ import { Container, Col } from "react-bootstrap";
 import UserPage from "./components/UserPage";
 import PrivateRoute from "./components/PrivateRoute";
 
+
 function App(props) {
     return (
         <div>
             <Header />
-            <Container>
+            <Container className="con">
                 <Col>
                     <Route exact path="/">
                         <Home />
