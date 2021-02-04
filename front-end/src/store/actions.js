@@ -12,7 +12,6 @@ export const loadRecipes = () => (dispatch) => {
     axiosWithAuth()
         .get("/recipes")
         .then((response) => {
-            console.log("dis", response.data);
             dispatch({ type: LOAD_RECIPES_SUCCESS, payload: response.data });
         })
         .catch((error) => dispatch({ type: AXIOS_FAIL, payload: error.data }));
@@ -28,17 +27,18 @@ export const submitRecipe = (recipe) => (dispatch) => {
             dispatch({ type: SUBMIT_RECIPE_SUCCESS });
         })
         .catch((error) => {
-            dispatch({ type: AXIOS_FAIL, payload: error.data });
+            dispatch({ type: AXIOS_FAIL, payload: "error.data" });
         });
 };
 
-export const editRecipe = (recipe) => (dispatch) => {
+export const editRecipe = (recipeId,recipe) => (dispatch) => {
     // needs id
     dispatch({ type: AXIOS_START });
 
     axiosWithAuth()
-        .put(`/recipes${recipe.id}`, recipe)
+        .put(`/recipes/${recipeId}`, recipe)
         .then((response) => {
+            console.log(response)
             dispatch({
                 type: EDIT_RECIPE_SUCCESS,
                 payload: response.data.recipe[0],

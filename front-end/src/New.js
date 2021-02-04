@@ -11,16 +11,43 @@ function New(props) {
         ingredients: "", // text, required
         instructions: "", // text, required
         notes: "", // text, optional
-        categories: [1], // array of category ids*, optional
+        categories: [], // array of category ids*, optional
     });
+
+    const categoriesArr = [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Vegetarian",
+        "Vegan",
+        "Gluten-Free",
+    ];
     const history = useHistory();
 
     const handleChange = (e) => {
-        setRecipeData({
-            ...recipeData,
-            [e.target.name]: e.target.value,
-        });
+        if (e.target.type === "checkbox") {
+            const valueInt = parseInt(e.target.value);
+            if (e.target.checked) {
+                setRecipeData({
+                    ...recipeData,
+                    categories: [...recipeData.categories, valueInt],
+                });
+            } else {
+                setRecipeData({
+                    ...recipeData,
+                    categories: recipeData.categories.filter(
+                        (category) => category !== valueInt
+                    ),
+                });
+            }
+        } else {
+            setRecipeData({
+                ...recipeData,
+                [e.target.name]: e.target.value,
+            });
+        }
     };
+
     const handleSubmitNewRecipe = (e) => {
         e.preventDefault();
         //dispatch and action to the reducer
@@ -98,7 +125,7 @@ function New(props) {
                     />
                 </Form.Group>
 
-                <div className="dropdown">
+                {/* <div className="dropdown">
                     <button
                         className="btn btn-secondary dropdown-toggle"
                         type="button"
@@ -127,7 +154,19 @@ function New(props) {
                             Dessert
                         </p>
                     </div>
-                </div>
+                </div> */}
+
+                {categoriesArr.map((category, index) => {
+                    return (
+                        <Form.Check
+                            type="checkbox"
+                            id={index + 1}
+                            label={category}
+                            value={index + 1}
+                            onChange={handleChange}
+                        />
+                    );
+                })}
             </Form>
             <div>
                 <button
@@ -145,4 +184,4 @@ const mapStateToProps = (state) => {
     return state;
 };
 
-export default connect(mapStateToProps(), { submitRecipe, loadRecipes })(New);
+export default connect(mapStateToProps, { submitRecipe, loadRecipes })(New);
