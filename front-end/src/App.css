@@ -1,11 +1,97 @@
-.mb-10 {
-  margin: 20% 15%;
-  padding: 5% 10%;
-  border-radius: 5%;
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+
+.grandma{
+  font-family: 'Caveat', cursive;
+  color: rgb(253,152,39);
 }
 
+
+.mb-10 {
+  margin: 10% 15%;
+  padding: 5% 10%;
+  border-radius: 5%;
+  border: 3px solid rgb(60, 63, 66);
+  box-shadow: rgb(253,152,39) 3px 4px;
+}
+
+.card-group{
+  margin-top:5rem;
+  margin-bottom:5rem;
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:15rem;
+  justify-items:center;
+  
+}
+
+.mb-11{
+  height: 620px;
+  padding:1rem;
+  border: 3px solid rgb(60, 63, 66);
+  box-shadow: rgb(253,152,39) 3px 4px;
+  background-color:rgb(52,58,64);
+  color:whitesmoke;
+
+}
+
+.btn-container{
+  display:flex;
+  justify-content: center;
+}
+
+.btn{
+  padding:.5rem 3rem;
+  margin:.2rem;
+  background-color:rgb(253,152,39);
+  border:1px solid rgb(52,58,64);
+}
+
+.title{
+text-align:center;
+font-size:1.5rem;
+}
+
+h6{
+  text-align:center;
+}
+
+.sign{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+}
+
+@media screen and (max-width: 1104px){
+  .card-group{
+    margin-top:2rem;
+    margin-bottom:1rem;
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:10rem;
+    justify-items:center;
+  }
+
+  .sign{
+    display:grid;
+    grid-template-columns:repeat(1, minmax(0,1fr));
+  }
+}
+
+
+@media screen and (max-width: 800px){
+  .card-group{
+    margin: 0 auto;
+    margin-top:2rem;
+    margin-bottom:1rem;
+    display:grid;
+    grid-template-columns:repeat(1, minmax(0,1fr));
+    gap:5rem;
+    justify-items:center;
+  }
+}
+=======
 .mb-40 {
   margin: 20% 15%;
   padding: 5% 10%;
   border-radius: 5%;
 }
+

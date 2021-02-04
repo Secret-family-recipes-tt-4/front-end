@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Form } from "react-bootstrap";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { submitRecipe } from "./store/actions";
+import { submitRecipe, loadRecipes } from "./store/actions";
 
 function New(props) {
     const [recipeData, setRecipeData] = useState({
@@ -13,23 +11,52 @@ function New(props) {
         ingredients: "", // text, required
         instructions: "", // text, required
         notes: "", // text, optional
-        categories: [1], // array of category ids*, optional
+        categories: [], // array of category ids*, optional
     });
+
+    const categoriesArr = [
+        "Breakfast",
+        "Lunch",
+        "Dinner",
+        "Vegetarian",
+        "Vegan",
+        "Gluten-Free",
+    ];
     const history = useHistory();
-    const state = useSelector((state) => state);
-    const dispatch = useDispatch();
 
     const handleChange = (e) => {
-        setRecipeData({
-            ...recipeData,
-            [e.target.name]: e.target.value,
-        });
+        if (e.target.type === "checkbox") {
+            const valueInt = parseInt(e.target.value);
+            if (e.target.checked) {
+                setRecipeData({
+                    ...recipeData,
+                    categories: [...recipeData.categories, valueInt],
+                });
+            } else {
+                setRecipeData({
+                    ...recipeData,
+                    categories: recipeData.categories.filter(
+                        (category) => category !== valueInt
+                    ),
+                });
+            }
+        } else {
+            setRecipeData({
+                ...recipeData,
+                [e.target.name]: e.target.value,
+            });
+        }
     };
+
     const handleSubmitNewRecipe = (e) => {
         e.preventDefault();
         //dispatch and action to the reducer
-        dispatch(submitRecipe(recipeData));
-        history.push("/");
+        props.submitRecipe(recipeData);
+        //!!! IMPORTANT !!!
+        //submit recipe doesn`t change isloading to True because API doesnt return submitted recipe.
+        //when SUBMIT_RECIPE called, LOAD_RECIPES must be called afterwards.
+        props.loadRecipes();
+        history.push("/User-page");
     };
     return (
         <div>
@@ -98,7 +125,7 @@ function New(props) {
                     />
                 </Form.Group>
 
-                <div className="dropdown">
+                {/* <div className="dropdown">
                     <button
                         className="btn btn-secondary dropdown-toggle"
                         type="button"
@@ -133,7 +160,19 @@ function New(props) {
                             Gluten-Free
                         </p>
                     </div>
-                </div>
+                </div> */}
+
+                {categoriesArr.map((category, index) => {
+                    return (
+                        <Form.Check
+                            type="checkbox"
+                            id={index + 1}
+                            label={category}
+                            value={index + 1}
+                            onChange={handleChange}
+                        />
+                    );
+                })}
             </Form>
             <div>
                 <button
@@ -151,4 +190,4 @@ const mapStateToProps = (state) => {
     return state;
 };
 
-export default connect(mapStateToProps(), { submitRecipe })(New);
+export default connect(mapStateToProps, { submitRecipe, loadRecipes })(New);

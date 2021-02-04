@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Card, Form } from "react-bootstrap";
-import { Link, Route, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axios from "axios";
-import Sign from "./Sign";
 
 function Login() {
     const history = useHistory();
     const [formData, setFormData] = useState({ username: "", password: "" });
+    const [error, setError] = useState("")
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -24,16 +24,20 @@ function Login() {
             .then((res) => {
                 console.log(res.data);
                 localStorage.setItem("token", res.data.token);
-                history.push("/");
+                history.push(`/User-page`);
             })
             .catch((err) => {
                 console.log(err);
+                setError(err)
+                setFormData({ username: "", password: "" })
             });
     };
+   
 
     return (
         <Card className="mb-10">
             <Card.Body>
+                {error && <h1>Please reenter username or password, or create a new account</h1>}
                 <div className="mx-auto">
                     <Form>
                         <Form.Group>
@@ -62,17 +66,17 @@ function Login() {
                             <Form.Text className="text-muted"></Form.Text>
                         </Form.Group>
                     </Form>
-                    <div className="sign">
-                        <h6>Don't have an account?</h6>
-                        <Link to="/Sign" className="btn btn-primary">
+                  
+                        <h6> Don't have an account?</h6>
+                        <div  className="sign">
+                        <Link to="/Sign" className="btn btn-secondary">
                             Sign up
                         </Link>
-                    </div>
-                    <div className="sign">
-                        <button
-                            class="btn btn-success"
+                        <button 
+                            className="btn btn-secondary"
                             type="submit"
                             onClick={handleSubmitSignIn}
+                            style={{marginLeft:20}}
                         >
                             Sign in
                         </button>

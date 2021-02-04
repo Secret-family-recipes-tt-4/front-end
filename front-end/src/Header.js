@@ -1,20 +1,23 @@
 import React from "react";
-import { Link, Route, useHistory } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import New from "./New";
-function Header() {
-  const history=useHistory()
+import { Link, useHistory } from "react-router-dom";
 
-  const handleSignout=(e)=>{
-    e.preventDefault()
-    localStorage.clear('token')
-    history.push('/')
-  }
+
+function Header() {
+  const history = useHistory();
+
+  const handleSignout = (e) => {
+    localStorage.clear("token");
+    history.push("/");
+    window.location.reload();
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-light bg-light navbar-expand-lg fixed top">
-        {/* <Link to="/">Secret Family Recipies</Link> */}
+     
+      <nav className="navbar navbar-dark bg-dark navbar-expand-lg fixed top">
+        <div>
+         <img src="https://i.ibb.co/pXZvgHd/cutlery-1.png"/>
+     </div>
         <button
           className="navbar-toggler"
           data-toggle="collapse"
@@ -22,7 +25,7 @@ function Header() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarCollapse">
+        <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarCollapse">
           <ul className="navbar-nav ml-left">
             <li className="navbar-item">
               <Link to="/" className="nav-link">
@@ -37,27 +40,29 @@ function Header() {
             </li>
             <li className="navbar-item">
               <Link to="/" className="nav-link" onClick={handleSignout}>
-               Logout
+                Logout
               </Link>
             </li>
-            <li className="navbar-item">
-              <Link to="/New" className="nav-link">
-                New Recipes
-              </Link>
-            </li>
+           
+            {localStorage.getItem("token") && (
+              <li className="navbar-item">
+                <Link to="/User-page" className="nav-link">
+                  User page
+                </Link>
+              </li>
+            )}
+            {localStorage.getItem("token") && (
+              <li className="navbar-item">
+                <Link to="/New" className="nav-link">
+                  New Recipes
+                </Link>
+              </li>
+            )}
           </ul>
+          <div className="grandma">
+              <h1>Secret Family Recipes</h1>
+            </div>
         </div>
-        <form className="d-flex">
-          <input
-            className="form-control me-2"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <button className="btn btn-outline-success" type="submit">
-            Search
-          </button>
-        </form>
       </nav>
     </div>
   );

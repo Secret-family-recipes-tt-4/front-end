@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import "./App.css";
@@ -8,13 +8,15 @@ import Login from "./Login";
 import Sign from "./Sign";
 import New from "./New";
 import { Container, Col } from "react-bootstrap";
+import UserPage from "./components/UserPage";
+import PrivateRoute from "./components/PrivateRoute";
+
 
 function App(props) {
     return (
         <div>
-            {console.log("app", props)}
             <Header />
-            <Container>
+            <Container className="con">
                 <Col>
                     <Route exact path="/">
                         <Home />
@@ -28,11 +30,16 @@ function App(props) {
                     <Route exact path="/Sign">
                         <Sign />
                     </Route>
+                    <PrivateRoute
+                        exact
+                        path="/User-page"
+                        component={UserPage}
+                    />
                 </Col>
             </Container>
         </div>
     );
-    }
+}
 
 const mapStateToProps = (state) => {
     return state;
