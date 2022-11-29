@@ -7,6 +7,7 @@ import Recipes from "./Recipes";
 const UserPage = (props) => {
   const [filteredRecipes, setFilteredRecipes] = useState(props.recipes);
   const [searchWord, setSearchWord] = useState("");
+
   useEffect(() => {
     loadRecipes();
   }, []);
