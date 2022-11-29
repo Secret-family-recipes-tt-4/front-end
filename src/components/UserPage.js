@@ -4,22 +4,21 @@ import { connect } from "react-redux";
 import { loadRecipes } from "../store/actions";
 import Recipes from "./Recipes";
 
-const UserPage = ({ recipes, loadRecipes }) => {
-  const [filteredRecipes, setFilteredRecipes] = useState(recipes);
+const UserPage = (props) => {
+  const [filteredRecipes, setFilteredRecipes] = useState(props.recipes);
   const [searchWord, setSearchWord] = useState("");
-
   useEffect(() => {
     loadRecipes();
-  }, [loadRecipes]);
+  }, []);
 
   useEffect(() => {
-    setFilteredRecipes(recipes);
+    setFilteredRecipes(props.recipes);
     setSearchWord("");
-  }, [recipes]);
+  }, [props.recipes]);
 
   useEffect(() => {
     if (searchWord.length >= 3) {
-      const filtered = recipes.filter((recipe) => {
+      const filtered = props.recipes.filter((recipe) => {
         if (
           recipe.title.toLowerCase().includes(searchWord) ||
           recipe.categories.toLowerCase().includes(searchWord)
@@ -30,9 +29,9 @@ const UserPage = ({ recipes, loadRecipes }) => {
       });
       setFilteredRecipes(filtered);
     } else {
-      setFilteredRecipes(recipes);
+      setFilteredRecipes(props.recipes);
     }
-  }, [recipes, searchWord]);
+  }, [props.recipes, searchWord]);
 
   const handleSearchChange = (e) => {
     setSearchWord(e.target.value);
@@ -41,7 +40,7 @@ const UserPage = ({ recipes, loadRecipes }) => {
   const handleSearch = (e) => {
     e.preventDefault();
     if (searchWord.length >= 3) {
-      const filtered = recipes.filter((recipe) => {
+      const filtered = props.recipes.filter((recipe) => {
         if (
           recipe.title.toLowerCase().includes(searchWord) ||
           recipe.categories.toLowerCase().includes(searchWord)
@@ -52,12 +51,11 @@ const UserPage = ({ recipes, loadRecipes }) => {
       });
       setFilteredRecipes(filtered);
     } else {
-      setFilteredRecipes(recipes);
+      setFilteredRecipes(props.recipes);
     }
   };
 
-  // eslint-disable-next-line no-undef
-  if (isLoading) {
+  if (props.isLoading) {
     return <div>Loading...</div>;
   }
 
